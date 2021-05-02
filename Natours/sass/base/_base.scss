@@ -1,0 +1,48 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // THIS DEFINES WHAT 1rem IS
+  font-size: 62.5%;
+
+  //@include respond(phone){
+  //  font-size: 50%; // basically i dont need that because for phone its <=600px
+  //                  // the tab-port will apply that too because <=900px
+  //}
+
+  @include respond(tab-land){
+    font-size: 56.25%; //  i want that 1 rem will be equal to 9px for that im doing 9/16 = 56.25% because 1rem=16px
+  }
+
+  @include respond(tab-port){
+    font-size: 50%; //  i want that 1 rem will be equal to 8px for that im doing 8/16 = 50% because 1rem=16px
+  }
+
+  //@include respond(phone){
+  //  font-size: 25% ;
+  //}
+
+  @include respond(big-desktop){
+    font-size: 75%; //  i want that 1 rem will be equal to 12px for that im doing 12/16 = 75% because 1rem=16px
+  }
+}
+
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port){
+    padding: 0;
+  }
+}
+
+::selection{
+  background-color: #ff7730;
+  color: #5643fa;
+}

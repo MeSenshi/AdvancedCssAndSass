@@ -1,0 +1,64 @@
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//media query manager
+/*
+0 - 600px  Phone
+600 - 900px  Tablet portrait
+900 - 1200px  Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px+  Big desktops
+ */
+
+// this is an example for media query with just pass the content
+@mixin respond-phone{
+  @media (max-width: 600px) {
+  @content
+  }
+}
+
+/*
+$breakPoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+ */
+
+// this is an example for media query with  pass the content  with parameters
+@mixin respond($breakPoint){
+  @if($breakPoint == phone){
+    @media only screen and (max-width: 37.5em) { // 600px / 16px = 37.5
+      @content
+    }
+  }
+  @if($breakPoint == tab-port){
+    @media only screen and (max-width: 56.25em) { // 900px / 16px = 56.25
+      @content
+    }
+  }
+  @if($breakPoint == tab-land){
+    @media only screen and (max-width: 75em) { // 1200px / 16px = 75
+      @content
+    }
+  }
+  @if($breakPoint == big-desktop){
+    @media only screen and (min-width: 112.5em) { // 1800px / 16px = 112.5
+      @content
+    }
+  }
+}
